@@ -131,11 +131,11 @@ extension Toy {
 }
 var xiaoming = Child()
 let palyClosure = {(child: Child) -> ()? in child.pet?.toy?.play()}
-if let _: () = palyClosure(xiaoming) {
-    print("好开心~")
-} else {
-    print("没有玩具可以玩 :(")
-}
+//if let _: () = palyClosure(xiaoming) {
+//    print("好开心~")
+//} else {
+//    print("没有玩具可以玩 :(")
+//}
 
 /** 操作符 */
 precedencegroup DotProductPrecedence {
@@ -227,4 +227,41 @@ func isDangerous<T: Animal>(animal: T) -> Bool {
     } else {
         return false
     }
+}
+
+/** 可变参数函数 */
+func sum(input: Int...) -> Int {
+    return input.reduce(0, +)
+}
+func myFunc(numbers: Int..., string: String) {
+    numbers.forEach {
+        for i in 0..<$0 {
+            print("\(i + 1):\(string)")
+        }
+    }
+}
+
+/** 初始化方法顺序 */
+/** 初始化返回nil */
+/** 多类型和容器 */
+/** default参数 */
+/** 正则表达式 */
+struct RegexHelper {
+    let regex: NSRegularExpression
+    init(_ pattern: String) throws {
+        try regex = NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+    }
+    func match(_ input: String) -> Bool {
+        let matches = regex.matches(in: input, options: [], range: NSMakeRange(0, input.utf16.count))
+        return matches.count > 0
+    }
+}
+let mainPattern = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
+let matcher: RegexHelper
+do {
+    matcher = try RegexHelper(mainPattern)
+}
+let mayBeMailAddress = "onev@onevcat.com"
+if matcher.match(mayBeMailAddress) {
+    print("有效的邮箱地址")
 }
