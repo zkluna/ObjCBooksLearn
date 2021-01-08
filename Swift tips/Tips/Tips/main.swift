@@ -8,6 +8,7 @@
 
 import Foundation
 
+/*
 /** Currying */
 //func addTo(_ adder: Int) -> (Int) -> Int {
 //    return { num in
@@ -227,4 +228,40 @@ func isDangerous<T: Animal>(animal: T) -> Bool {
     } else {
         return false
     }
+}
+*/
+
+/**  进阶  */
+
+//var x = [1, 2, 3]
+//var y = x
+//y.append(4)
+//print(y)
+//print(x)
+
+//let a = NSMutableArray(array: [1, 2, 3])
+//let b: NSArray = a
+//a.insert(4, at: 3)
+//print(a)
+//print(b)
+//print( (1..<10).map{ $0 * $0 }.filter{$0 % 2 == 0} )
+
+//let suits = ["♠", "♥", "♣", "♦"]
+//let ranks = ["J","Q","K","A"]
+//
+//let subResult = ranks.map{ rank in
+//    ("♠", rank)
+//}
+//print(subResult)
+//
+//let result = suits.flatMap { suit in
+//    ranks.map{ rank in
+//        (suit, rank)
+//    }
+//}
+//print(result)
+
+(1..<10).forEach{ number in
+    print(number)
+    if number > 2 { return }
 }
